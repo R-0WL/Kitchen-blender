@@ -1,11 +1,11 @@
 /**
  * Universidad del Valle de Guatemala
- * Autor: Adrian Penagos
+ * Autores: Adrian Penagos, Luis Lee y René Abella
  * Fecha: 16 de enero de 2025
- * Descripción: Interfaz que define métodos para manejar un sistema que incluye encender,
+ * Descripción: ILicuadora que define métodos para manejar un sistema que incluye encender,
  * llenar, controlar velocidad y consultar el estado del llenado.
  */
-public interface Interfaz {
+public interface ILicuadora {
 
     /**
      * Método para encender el sistema.
