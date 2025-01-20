@@ -17,57 +17,6 @@ public class Licuadora implements Interfaz {
         this.velocidad = 0;
     }
 
-    // Método que permite encender y apagar la licuadora
-    @Override
-    public void encender() {
-        if (!encendida) {
-            encendida = true;
-            velocidad = 0; // Reseteamos la velocidad al encender
-        } else {
-            encendida = false;
-        }
-    }
-
-    @Override
-    public void llenar() {
-        if (!llena) {
-            llena = true;
-        } else {
-            //algo?
-        }
-    }
-
-    @Override
-    public void aumentarVelocidad() {
-        if (encendida) {
-            velocidad++;
-        } else {
-            //Tengo que ver aún
-        }
-    }
-
-    //Retorna la velocidad actual de la licuadora
-    @Override
-    public int consultarVelocidad() {
-        return velocidad;
-    }
-
-    //True or false llena
-    @Override
-    public boolean consultarLlenado() {
-        return llena;
-    }
-
-
-    @Override
-    public void vaciar() {
-        if (llena) {
-            llena = false;
-        } else {
-            //Debería retornar algún valor o que se quede como void? 
-        }
-    }
-
     // Getters y Setters
     public boolean getEncendida() {
         return encendida;
@@ -92,5 +41,61 @@ public class Licuadora implements Interfaz {
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
+
+    // Método que permite encender y apagar la licuadora
+    @Override
+    public void encender() {
+        if (encendida == false) {
+            encendida = true;
+            velocidad = 1; //  0 = no encendido
+        } else {
+            velocidad = 0;
+            encendida = false;
+        }
+    }
+
+    @Override
+    public void llenar() {
+        if (llena == false) {
+            llena = true;
+        } else {
+            throw new
+            UnsupportedOperationException("La licuadora ya está llena");
+        }
+    }
+
+    @Override
+    public void aumentarVelocidad() {
+        if (encendida == true) {
+            velocidad++;
+        } else {
+            throw new
+            UnsupportedOperationException("Licuadora apagada");
+        }
+    }
+
+    //Retorna la velocidad actual de la licuadora
+    @Override
+    public int consultarVelocidad() {
+        return velocidad;
+    }
+
+    //True or false llena
+    @Override
+    public boolean consultarLlenado() {
+        return llena;
+    }
+
+
+    @Override
+    public void vaciar() {
+        if (llena == true) {
+            llena = false;
+        } else {
+            throw new
+            UnsupportedOperationException("La licuadora ya está vacía");
+        }
+    }
+
 }
 
