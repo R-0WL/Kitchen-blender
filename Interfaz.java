@@ -5,7 +5,7 @@
  * Descripción: ILicuadora que define métodos para manejar un sistema que incluye encender,
  * llenar, controlar velocidad y consultar el estado del llenado.
  */
-public interface ILicuadora {
+public interface Interfaz {
 
     /**
      * Método para encender el sistema.
