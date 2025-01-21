@@ -45,7 +45,7 @@ public class Licuadora implements Interfaz {
     // Método que permite encender y apagar la licuadora
     @Override
     public void encender() {
-        if (encendida == false) {
+        if (encendida == false && llena == true) {
             encendida = true;
             velocidad = 1; //  0 = no encendido
         } else {
@@ -66,11 +66,16 @@ public class Licuadora implements Interfaz {
 
     @Override
     public void aumentarVelocidad() {
-        if (encendida == true) {
+        if (encendida == true && velocidad<10) {
             velocidad++;
-        } else {
+        } else { 
+            if (velocidad >= 10){
+                throw new
+                UnsupportedOperationException("Licuadora a máxima velocidad, apague para reiniciar la velocidad.");
+            } else {
             throw new
             UnsupportedOperationException("Licuadora apagada");
+            }
         }
     }
 
@@ -91,6 +96,7 @@ public class Licuadora implements Interfaz {
     public void vaciar() {
         if (llena == true) {
             llena = false;
+            velocidad = 0;
         } else {
             throw new
             UnsupportedOperationException("La licuadora ya está vacía");
