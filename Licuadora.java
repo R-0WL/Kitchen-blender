@@ -1,102 +1,107 @@
-public class Licuadora implements ILicuadora {
+/**
+ * Universidad del Valle de Guatemala
+ * Autor: Adrian Penagos, Luis Lee y René Abella
+ * Fecha: 16 de enero de 2025
+ * Clase Licuadora que implementa la interfaz Interfaz.
+ */
+public class Licuadora implements Interfaz {
+    // Atributos
+    private boolean encendida;
+    private boolean llena;
     private int velocidad;
-    private boolean lleno;
-    private String ASCCIKitchenBlender;
-    private String NOTFULL_BLENDER;
-    private String Overflowed;
 
-
-    /**
-     * Pausa la ejecución durante X milisegundos.
-     * @param milisegundos El número de milisegundos que se quiere esperar.
-     */
-    public static void esperar(int milisegundos){
-        try {
-            Thread.sleep(milisegundos);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    public void reducirVelocidad(){
-        if (velocidad>0){
-            velocidad--;
-            System.out.println("Velocidad reducida a:" + velocidad);
-        }
-        else {
-            System.out.println("Ninguna velocidad delimitada");
-        }
-    }
-
-    //This method indicates that it starts to liquefy; do not rename, because it was accepted as a group.
-    public void licuar() {
-        if (!lleno && velocidad == 0){
-            System.out.println("Llena la licuadora y/o elige una velocidad para poder empezar a licuar");
-        }
-        else {
-            int tiempoEspera = 110 - (velocidad * 10);
-            for (int i = 1; i<=100; i++) {
-
-                String ASCCIKitchenBlender = """
-                               _______
-                              /       \
-                             /         \
-                            |   UVG'S   |
-                            |  BLENDER  |
-                            |           |     Licuando ...  %d
-                            |___________|
-                                || ||
-                                (   )
-                                |   |
-                               /     \
-                              |_______|
-                        
-                        """;
-                System.out.printf(ASCCIKitchenBlender, i);
-
-                esperar(tiempoEspera);
-
-            }
-
-        }
-    }
-
-    @Override
-    public void encender(){
+    // Constructor
+    public Licuadora() {
+        this.encendida = false;
+        this.llena = false;
         this.velocidad = 0;
-        this.lleno = false;
-        System.out.println("Licuadora encendida");
+    }
+
+    // Getters y Setters
+    public boolean getEncendida() {
+        return encendida;
+    }
+
+    public void setEncendida(boolean encendida) {
+        this.encendida = encendida;
+    }
+
+    public boolean getLlena() {
+        return llena;
+    }
+
+    public void setLlena(boolean llena) {
+        this.llena = llena;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    // Método que permite encender y apagar la licuadora
+    @Override
+    public void encender() {
+        if (encendida == false && llena == true) {
+            encendida = true;
+            velocidad = 1; //  0 = no encendido
+        } else {
+            velocidad = 0;
+            encendida = false;
+        }
     }
 
     @Override
     public void llenar() {
-        System.out.println("Introduzca ");
+        if (llena == false) {
+            llena = true;
+        } else {
+            throw new
+            UnsupportedOperationException("La licuadora ya está llena");
+        }
     }
 
     @Override
     public void aumentarVelocidad() {
-        if (velocidad<10){
+        if (encendida == true && velocidad<10) {
             velocidad++;
-            System.out.println("Velocidad aumentada a:" + velocidad);
+        } else { 
+            if (velocidad >= 10){
+                throw new
+                UnsupportedOperationException("Licuadora a máxima velocidad, apague para reiniciar la velocidad.");
+            } else {
+            throw new
+            UnsupportedOperationException("Licuadora apagada");
+            }
         }
-        else {
-            System.out.println("Velocidad máxima alcanzada");
-        }
-
     }
 
+    //Retorna la velocidad actual de la licuadora
     @Override
     public int consultarVelocidad() {
         return velocidad;
     }
 
+    //True or false llena
     @Override
     public boolean consultarLlenado() {
-        return lleno;
+        return llena;
     }
+
 
     @Override
     public void vaciar() {
-
+        if (llena == true) {
+            llena = false;
+            velocidad = 0;
+        } else {
+            throw new
+            UnsupportedOperationException("La licuadora ya está vacía");
+        }
     }
+
 }
+
