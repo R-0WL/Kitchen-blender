@@ -1,3 +1,6 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 import org.junit.*;
 
 public class LicuadoraVelocidadTest {
@@ -16,11 +19,10 @@ public class LicuadoraVelocidadTest {
         licuadora.aumentarVelocidad();
         Assert.assertEquals(2, licuadora.getVelocidad());
         
-        // Caso 3: Límite de velocidad
-        for (int i = 0; i < 9; i++) {
-            licuadora.aumentarVelocidad();
-        }
-        Assert.assertEquals(10, licuadora.getVelocidad());
-        Assert.assertThrows(UnsupportedOperationException.class, licuadora::aumentarVelocidad);
+       // Caso 3: Límite de velocidad
+       licuadora.setVelocidad(9);
+       licuadora.aumentarVelocidad();
+       Assert.assertEquals(10, licuadora.getVelocidad());
+       Assert.assertThrows(UnsupportedOperationException.class, licuadora::aumentarVelocidad);
     }
 }

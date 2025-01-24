@@ -10,11 +10,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //Instancia original:
-        // Licuadora licuadora = new Licuadora();
-
-        //Instancia de prueba con el otro grupo:
-        Licuadora100 licuadora = new Licuadora100();
+        //Instancia 
+        Licuadora licuadora = new Licuadora();
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
@@ -33,10 +30,10 @@ public class Main {
             switch (opcion) {
                 case 1:
                     licuadora.encender();
-                    if (licuadora.getEncendido()==true) {
+                    if (licuadora.getEncendida()==true) {
                         System.out.println("Licuadora encendida. Velocidad inicial: " + licuadora.getVelocidad());
                     } else { 
-                        if (licuadora.getLleno()==false){
+                        if (licuadora.getLlena()==false){
                             System.out.println("La licuadora no se puede encender a menos que esté llena");
                         } else {
                             System.out.println("Licuadora apagada.");
@@ -75,7 +72,7 @@ public class Main {
                     try {
                         licuadora.vaciar();
                         System.out.println("Licuadora vaciada.");
-                        if (licuadora.getEncendido()==true){
+                        if (licuadora.getEncendida()==true){
                             System.out.println("Licuadora apagada."); 
                         }
                     } catch (UnsupportedOperationException e) {
