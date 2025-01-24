@@ -9,6 +9,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        //Instancia original:
+        // Licuadora licuadora = new Licuadora();
+
+        //Instancia de prueba con el otro grupo:
         Licuadora100 licuadora = new Licuadora100();
         Scanner scanner = new Scanner(System.in);
         int opcion;
