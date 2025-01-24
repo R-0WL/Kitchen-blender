@@ -6,9 +6,10 @@ import java.util.Scanner;
  * Fecha: 16 de enero de 2025
  * Clase principal para probar la Licuadora.
  */
+
 public class Main {
     public static void main(String[] args) {
-        Licuadora licuadora = new Licuadora();
+        Licuadora100 licuadora = new Licuadora100();
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
@@ -27,10 +28,10 @@ public class Main {
             switch (opcion) {
                 case 1:
                     licuadora.encender();
-                    if (licuadora.getEncendida()==true) {
+                    if (licuadora.getEncendido()==true) {
                         System.out.println("Licuadora encendida. Velocidad inicial: " + licuadora.getVelocidad());
                     } else { 
-                        if (licuadora.getLlena()==false){
+                        if (licuadora.getLleno()==false){
                             System.out.println("La licuadora no se puede encender a menos que esté llena");
                         } else {
                             System.out.println("Licuadora apagada.");
@@ -69,7 +70,7 @@ public class Main {
                     try {
                         licuadora.vaciar();
                         System.out.println("Licuadora vaciada.");
-                        if (licuadora.getEncendida()==true){
+                        if (licuadora.getEncendido()==true){
                             System.out.println("Licuadora apagada."); 
                         }
                     } catch (UnsupportedOperationException e) {
